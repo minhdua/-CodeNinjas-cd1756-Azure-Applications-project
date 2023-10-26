@@ -1,6 +1,10 @@
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+from decouple import Config, Csv
+
+config = Config()
+config.read_dotenv()
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
