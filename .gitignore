@@ -1,0 +1,40 @@
+# Virtual Environment
+venv/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# Compiled source
+*.pyc
+
+# Flask specific
+instance/
+.maintenance/
+.env
+
+# Database
+*.sqlite
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+
+# Translations
+*.mo
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+
+# Configuration files
+*.ini

@@ -1,0 +1,651 @@
+2023-10-30 00:39:33,947 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2276, in _wrap_pool_connect
+    return fn()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 489, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open server 'minhdua-sql-server' requested by the login. Client with IP address '125.235.212.145' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect. (40615) (SQLDriverConnect); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open server 'minhdua-sql-server' requested by the login. Client with IP address '125.235.212.145' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect. (40615)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3411, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3426, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3404, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2242, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2280, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1547, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2276, in _wrap_pool_connect
+    return fn()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 489, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open server 'minhdua-sql-server' requested by the login. Client with IP address '125.235.212.145' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect. (40615) (SQLDriverConnect); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open server 'minhdua-sql-server' requested by the login. Client with IP address '125.235.212.145' is not allowed to access the server.  To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect. (40615)")
+(Background on this error at: http://sqlalche.me/e/f405)
+2023-10-30 00:43:22,618 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3414, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 982, in execute
+    return meth(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1101, in _execute_clauseelement
+    distilled_params,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[SQL: SELECT TOP 1 users.id AS users_id, users.username AS users_username, users.password_hash AS users_password_hash 
+FROM users 
+WHERE users.username = ?]
+[parameters: ('admin',)]
+(Background on this error at: http://sqlalche.me/e/f405)
+2023-10-30 00:45:31,666 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3414, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 982, in execute
+    return meth(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1101, in _execute_clauseelement
+    distilled_params,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[SQL: SELECT TOP 1 users.id AS users_id, users.username AS users_username, users.password_hash AS users_password_hash 
+FROM users 
+WHERE users.username = ?]
+[parameters: ('admin',)]
+(Background on this error at: http://sqlalche.me/e/f405)
+2023-10-30 00:48:37,112 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3414, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 982, in execute
+    return meth(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1101, in _execute_clauseelement
+    distilled_params,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[SQL: SELECT TOP 1 users.id AS users_id, users.username AS users_username, users.password_hash AS users_password_hash 
+FROM users 
+WHERE users.username = ?]
+[parameters: ('admin',)]
+(Background on this error at: http://sqlalche.me/e/f405)
+2023-10-30 00:51:52,449 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3414, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 982, in execute
+    return meth(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1101, in _execute_clauseelement
+    distilled_params,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[SQL: SELECT TOP 1 users.id AS users_id, users.username AS users_username, users.password_hash AS users_password_hash 
+FROM users 
+WHERE users.username = ?]
+[parameters: ('admin',)]
+(Background on this error at: http://sqlalche.me/e/f405)
+2023-10-30 00:53:32,389 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3414, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 982, in execute
+    return meth(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1101, in _execute_clauseelement
+    distilled_params,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[SQL: SELECT TOP 1 users.id AS users_id, users.username AS users_username, users.password_hash AS users_password_hash 
+FROM users 
+WHERE users.username = ?]
+[parameters: ('admin',)]
+(Background on this error at: http://sqlalche.me/e/f405)
+2023-10-30 00:54:11,543 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3414, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 982, in execute
+    return meth(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1101, in _execute_clauseelement
+    distilled_params,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'users'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[SQL: SELECT TOP 1 users.id AS users_id, users.username AS users_username, users.password_hash AS users_password_hash 
+FROM users 
+WHERE users.username = ?]
+[parameters: ('admin',)]
+(Background on this error at: http://sqlalche.me/e/f405)
+2023-10-30 00:55:44,063 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2276, in _wrap_pool_connect
+    return fn()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 489, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+pyodbc.InterfaceError: ('28000', "[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'mdadmin'. (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'mdadmin'. (18456)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3411, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3426, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3404, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2242, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2280, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1547, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2276, in _wrap_pool_connect
+    return fn()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 489, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.InterfaceError: (pyodbc.InterfaceError) ('28000', "[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'mdadmin'. (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'mdadmin'. (18456)")
+(Background on this error at: http://sqlalche.me/e/rvf5)
+2023-10-30 00:58:22,557 [ERROR] - Exception on /getAToken [GET]
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2276, in _wrap_pool_connect
+    return fn()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 489, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+pyodbc.InterfaceError: ('28000', "[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'mdadmin'. (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'mdadmin'. (18456)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\FlaskWebProject\views.py", line 99, in authorized
+    user = User.query.filter_by(username="admin").first()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3287, in first
+    ret = list(self[0:1])
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3065, in __getitem__
+    return list(res)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3411, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3426, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\query.py", line 3404, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2242, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2280, in _wrap_pool_connect
+    e, dialect, self
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 1547, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\base.py", line 2276, in _wrap_pool_connect
+    return fn()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\util\compat.py", line 153, in reraise
+    raise value
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "D:\Study\Udacity\Batch-11\-CodeNinjas-cd1756-Azure-Applications-project\venv2\lib\site-packages\sqlalchemy\engine\default.py", line 489, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.InterfaceError: (pyodbc.InterfaceError) ('28000', "[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'mdadmin'. (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'mdadmin'. (18456)")
+(Background on this error at: http://sqlalche.me/e/rvf5)
